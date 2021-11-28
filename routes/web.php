@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ComprasExport;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('listar', 'ConprasController');
 Route::GET('actualizar/{usuario}', 'ConprasController@update');
+Route::get('export', function (){
+    return Excel::download(new ComprasExport, 'Compras.xlsx');
+});
 
 
 Auth::routes();

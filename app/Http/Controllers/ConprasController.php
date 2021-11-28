@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Compras;
 use App\Proveedor;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ConprasController extends Controller
 {
@@ -15,7 +16,9 @@ class ConprasController extends Controller
      */
     public function index()
     {
-        $compras= Compras::all();
+        $compras= Compras::select('id_compras','proveedor.empresa','Fecha_compra','monto','descripcion')
+        ->join('proveedor','proveedor.id','=','compras.id_proveedor')
+        ->get();
         return view('home.index',compact('compras'));
     }
 
@@ -120,4 +123,5 @@ class ConprasController extends Controller
         $Compras->delete();
         return redirect('listar')->with('success', 'Se ha eliminado correctamente');
     }
+
 }

@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">Registros
                 <a href="{{ route('listar.create')}}" style="text-align: right;"class="btn btn-success">Agregar</a>
-
+                <a href="{{ url('export')}}" style="text-align: right;"class="btn btn-success">Descargar excel</a>
                 </div>
                 <div class="card-body">
                   <table class="table table-responsive col-lg-12">
@@ -30,8 +30,8 @@
                     <tbody>
                     @foreach($compras as $user)
                         <tr>
-                       <td>{{$user->id_proveedor}}</td>
-                       <td>{{$user->fecha_compra}}</td>
+                       <td>{{$user->empresa}}</td>
+                       <td>{{$user->Fecha_compra}}</td>
                        <td>{{$user->monto}}</td>
                        <td>{{$user->descripcion}}</td>
                        <td><a href="{{ route('listar.edit', $user->id_compras)}}" class="btn btn-primary">Editar</a></td>
