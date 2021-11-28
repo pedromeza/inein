@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return redirect()->route('listar');
+// });
+
+Route::resource('listar', 'ConprasController');
+Route::GET('actualizar/{usuario}', 'ConprasController@update');
+
+
+Auth::routes();
+
